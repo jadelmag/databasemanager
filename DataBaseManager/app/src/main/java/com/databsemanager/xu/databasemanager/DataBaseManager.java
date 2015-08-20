@@ -5,9 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-/**
- * Created by Xu on 11/8/15.
- */
 public class DataBaseManager {
     // Mode
     private static final Boolean MODE_READABLE = true;
@@ -33,14 +30,16 @@ public class DataBaseManager {
     // When getWritableDatabase() is called: it creates the database and returns it in write mode.
     // But, already it exists, returns directly.
     public DataBaseManager(Context context) {
+        open(context);
+    }
+
+    public void open(Context context) {
         dHelper = new DataBaseHelper(context);
         db = dHelper.getWritableDatabase();
     }
 
-    public DataBaseManager(Context context, Boolean isReadable) {
-        dHelper = new DataBaseHelper(context);
-        if (isReadable == MODE_READABLE) db = dHelper.getReadableDatabase();
-        else db = dHelper.getWritableDatabase();
+    public void close() {
+        dHelper.close();
     }
 
     // Data Base Methods

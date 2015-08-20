@@ -10,9 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-/**
- * Created by Xu on 12/8/15.
- */
 public class ModifyActivity extends Activity {
 
     private DataBaseManager manager;
